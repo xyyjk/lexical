@@ -167,7 +167,7 @@ export type CreateEditorArgs = {
   editable?: boolean;
   theme?: EditorThemeClasses;
   html?: {
-    export?: Map<Klass<LexicalNode>, DOMExportOutput>;
+    export?: Map<Klass<LexicalNode>, () => DOMExportOutput>;
     import?: DOMConversionMap;
   };
 };
@@ -179,6 +179,10 @@ export type RegisteredNode = {
   transforms: Set<Transform<LexicalNode>>;
   replace: null | ((node: LexicalNode) => LexicalNode);
   replaceWithKlass: null | Klass<LexicalNode>;
+  exportDOM?: (
+    editor: LexicalEditor,
+    targetNode: LexicalNode,
+  ) => DOMExportOutput;
 };
 
 export type Transform<T extends LexicalNode> = (node: T) => void;
