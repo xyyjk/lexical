@@ -203,7 +203,6 @@ export class TableSelection {
         tableElement,
         editor._config.theme.tableSelection,
       );
-      tableElement.classList.remove('disable-selection');
       this.hasHijackedSelectionStyles = false;
     });
   }
